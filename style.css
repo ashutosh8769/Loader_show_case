@@ -286,10 +286,10 @@ body::before {
 }
 
 @keyframes color-flip-svg {
-    0%   { fill: #38bdf8; filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.8)); }
-    25%  { fill: #f472b6; filter: drop-shadow(0 0 15px rgba(244, 114, 182, 0.8)); }
-    50%  { fill: #fbbf24; filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.8)); }
-    75%  { fill: #10b981; filter: drop-shadow(0 0 15px rgba(16, 185, 129, 0.8)); }
+    0%   { fill: #38bdf8; filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.8)); }
+    25%  { fill: #f472b6; filter: drop-shadow(0 0 8px rgba(244, 114, 182, 0.8)); }
+    50%  { fill: #fbbf24; filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.8)); }
+    75%  { fill: #10b981; filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.8)); }
 }
 
 /* ================================================
