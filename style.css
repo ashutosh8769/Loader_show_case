@@ -751,6 +751,193 @@ body::before {
     75%  { fill: #10b981; filter: drop-shadow(0 0 15px rgba(16, 185, 129, 0.8)); }
 }
 
+/* ================================================
+   VARIANT 14 — Quantum Split
+   ================================================ */
+.variant-14 {
+    perspective: 800px;
+    transform-style: preserve-3d;
+}
+.variant-14 .split-layer {
+    position: absolute;
+    width: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.variant-14 .split-layer .logo-img {
+    width: 100%;
+    filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.4));
+}
+.variant-14 .split-front { animation: quantum-front 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; z-index: 3; }
+.variant-14 .split-mid { animation: quantum-mid 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; opacity: 0.7; z-index: 2; }
+.variant-14 .split-back { animation: quantum-back 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; opacity: 0.4; z-index: 1; }
+
+@keyframes quantum-front {
+    0%, 100% { transform: translateZ(0) rotateY(0deg) rotateX(0deg); }
+    50% { transform: translateZ(40px) rotateY(15deg) rotateX(10deg); filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.8)) brightness(1.2); }
+}
+@keyframes quantum-mid {
+    0%, 100% { transform: translateZ(0) scale(1); }
+    50% { transform: translateZ(0) scale(0.9); }
+}
+@keyframes quantum-back {
+    0%, 100% { transform: translateZ(0) rotateY(0deg) rotateX(0deg); }
+    50% { transform: translateZ(-40px) rotateY(-15deg) rotateX(-10deg); filter: blur(2px); }
+}
+
+/* ================================================
+   VARIANT 15 — Gyroscopic Core
+   ================================================ */
+.variant-15 {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+.variant-15 .gyro-logo {
+    width: 60px;
+    animation: gyro-pulse 2s ease-in-out infinite alternate;
+    z-index: 10;
+}
+.variant-15 .gyro-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    transform-style: preserve-3d;
+}
+.variant-15 .ring-1 {
+    width: 110px;
+    height: 110px;
+    border-top: 2px solid #38bdf8;
+    border-right: 2px solid #38bdf8;
+    animation: spin-ring-1 3s linear infinite;
+    filter: drop-shadow(0 0 5px #38bdf8);
+}
+.variant-15 .ring-2 {
+    width: 130px;
+    height: 130px;
+    border-bottom: 2px solid #f472b6;
+    border-left: 2px solid #f472b6;
+    animation: spin-ring-2 4s linear infinite;
+    filter: drop-shadow(0 0 5px #f472b6);
+}
+.variant-15 .ring-3 {
+    width: 150px;
+    height: 150px;
+    border-top: 2px solid #fbbf24;
+    border-left: 2px solid #fbbf24;
+    animation: spin-ring-3 5s linear infinite;
+    filter: drop-shadow(0 0 5px #fbbf24);
+}
+
+@keyframes gyro-pulse {
+    0% { transform: scale(0.9); filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.4)); }
+    100% { transform: scale(1.1); filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.9)); }
+}
+@keyframes spin-ring-1 { 100% { transform: rotateX(360deg) rotateY(180deg) rotateZ(360deg); } }
+@keyframes spin-ring-2 { 100% { transform: rotateX(180deg) rotateY(360deg) rotateZ(180deg); } }
+@keyframes spin-ring-3 { 100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(0deg); } }
+
+/* ================================================
+   VARIANT 16 — Dimensional Echo
+   ================================================ */
+.variant-16 {
+    perspective: 800px;
+    transform-style: preserve-3d;
+}
+.variant-16 .echo-layer {
+    position: absolute;
+    width: 90px;
+    opacity: 0;
+    animation: dim-echo-anim 2s linear infinite;
+}
+
+@keyframes dim-echo-anim {
+    0% {
+        transform: translateZ(-200px) scale(0.5);
+        opacity: 0;
+        filter: blur(4px);
+    }
+    40% {
+        opacity: 0.6;
+        filter: blur(1px) drop-shadow(0 0 10px #38bdf8);
+    }
+    80% {
+        transform: translateZ(100px) scale(1.2);
+        opacity: 0;
+        filter: blur(2px);
+    }
+    100% {
+        transform: translateZ(150px) scale(1.3);
+        opacity: 0;
+    }
+}
+
+/* ================================================
+   VARIANT 17 — Magnetic Levitation
+   ================================================ */
+.variant-17 {
+    perspective: 800px;
+    transform-style: preserve-3d;
+}
+.variant-17 .mag-base {
+    position: absolute;
+    bottom: 20px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.4) 0%, rgba(56, 189, 248, 0) 70%);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    transform: rotateX(75deg);
+    animation: mag-base-pulse 2s ease-in-out infinite alternate;
+}
+.variant-17 .mag-logo {
+    width: 80px;
+    transform-origin: bottom center;
+    animation: mag-lev-anim 3s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+    z-index: 2;
+}
+
+@keyframes mag-base-pulse {
+    0% { transform: rotateX(75deg) scale(0.9); box-shadow: 0 0 15px rgba(56, 189, 248, 0.2); }
+    100% { transform: rotateX(75deg) scale(1.2); box-shadow: 0 0 35px rgba(56, 189, 248, 0.7); }
+}
+@keyframes mag-lev-anim {
+    0% { transform: translateY(-10px) rotateY(-15deg) rotateX(5deg); filter: drop-shadow(0 20px 10px rgba(56, 189, 248, 0.3)); }
+    100% { transform: translateY(-30px) rotateY(15deg) rotateX(-5deg); filter: drop-shadow(0 40px 15px rgba(56, 189, 248, 0.1)); }
+}
+
+/* ================================================
+   VARIANT 18 — Portal Flip
+   ================================================ */
+.variant-18 {
+    perspective: 800px;
+    transform-style: preserve-3d;
+}
+.variant-18 .portal-ring {
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 2px dashed rgba(244, 114, 182, 0.5);
+    animation: portal-spin 8s linear infinite;
+    box-shadow: 0 0 20px rgba(244, 114, 182, 0.2) inset, 0 0 20px rgba(244, 114, 182, 0.2);
+}
+.variant-18 .portal-logo {
+    width: 80px;
+    animation: portal-jump 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+}
+
+@keyframes portal-spin {
+    100% { transform: rotateZ(360deg); }
+}
+@keyframes portal-jump {
+    0% { transform: translateZ(-150px) rotateY(0deg) scale(0.5); opacity: 0; filter: blur(5px); }
+    20% { opacity: 1; filter: blur(0); }
+    50% { transform: translateZ(50px) rotateY(180deg) scale(1.1); filter: drop-shadow(0 0 20px #f472b6); }
+    80% { opacity: 1; filter: blur(0); }
+    100% { transform: translateZ(-150px) rotateY(360deg) scale(0.5); opacity: 0; filter: blur(5px); }
+}
+
 /* ── SVG filter defs (injected via HTML) ── */
 #svg-defs {
     position: absolute;
