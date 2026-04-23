@@ -721,66 +721,50 @@ body::before {
     }
 }
 
+/* ================================================
+   VARIANT 13 — Chameleon Tumble
+   Similar to Variant 12, but uses CSS masking
+   to change the logo's color on every flip.
+   ================================================ */
+.variant-13 {
+    perspective: 1000px;
+}
+
+.variant-13 .chameleon-logo {
+    width: 100px;
+    height: 115px; /* Adjust based on logo ratio */
+    
+    /* Using the SVG as a mask to allow color control */
+    background-color: #38bdf8;
+    -webkit-mask-image: url('bruno.svg');
+    mask-image: url('bruno.svg');
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+
+    /* Syncing color-change with rotation points */
+    animation: 
+        tumble-anim 4s linear infinite, 
+        float-anim 3s ease-in-out infinite alternate,
+        color-flip 8s step-end infinite;
+    
+    transform-style: preserve-3d;
+}
+
+@keyframes color-flip {
+    0%   { background-color: #38bdf8; filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.7)); }
+    25%  { background-color: #f472b6; filter: drop-shadow(0 0 15px rgba(244, 114, 182, 0.7)); }
+    50%  { background-color: #fbbf24; filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.7)); }
+    75%  { background-color: #10b981; filter: drop-shadow(0 0 15px rgba(16, 185, 129, 0.7)); }
+}
+
 /* ── SVG filter defs (injected via HTML) ── */
 #svg-defs {
     position: absolute;
     width: 0;
     height: 0;
     overflow: hidden;
-}
-
-/* ================================================
-   VARIANT 13 — Neural Energy Core
-   Traveling energy pulse with gradient + glow
-   ================================================ */
-
-.variant-13 .base {
-    fill: none;
-    stroke: rgba(255, 255, 255, 0.08);
-    stroke-width: 1.8;
-}
-
-/* gradient stroke */
-.variant-13 .energy {
-    fill: none;
-    stroke: url(#neonGrad);
-    stroke-width: 2.4;
-
-    stroke-dasharray: 18 82;
-    stroke-dashoffset: 0;
-
-    filter: url(#heavyGlow);
-
-    animation: neural-flow 2.4s linear infinite;
-}
-
-/* subtle breathing container */
-.variant-13 .logo-svg {
-    animation: neural-breathe 3s ease-in-out infinite;
-}
-
-/* motion */
-@keyframes neural-flow {
-    0% {
-        stroke-dashoffset: 100;
-    }
-
-    100% {
-        stroke-dashoffset: -100;
-    }
-}
-
-/* life-like motion */
-@keyframes neural-breathe {
-
-    0%,
-    100% {
-        transform: scale(1);
-        opacity: 0.9;
-    }
-
-    50% {
-        transform: scale(0.96);
-        opacity: 1;
-    }
 }
