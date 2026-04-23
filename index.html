@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BrunoAI Loader Showcase</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- ── Global SVG defs (gradients + filters) ── -->
+    <svg id="svg-defs" style="position: absolute; width: 0; height: 0; overflow: hidden;" aria-hidden="true">
+        <defs>
+            <!-- Original: Liquid Grad -->
+            <linearGradient id="liquidGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#a78bfa" />
+                <stop offset="50%" stop-color="#38bdf8" />
+                <stop offset="100%" stop-color="#f472b6" />
+            </linearGradient>
+
+            <!-- New: Neon Grad -->
+            <linearGradient id="neonGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#4ade80" />
+                <stop offset="100%" stop-color="#22c55e" />
+            </linearGradient>
+
+            <!-- New: Deep Sea Grad -->
+            <linearGradient id="seaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#0ea5e9" />
+                <stop offset="100%" stop-color="#2dd4bf" />
+            </linearGradient>
+
+            <!-- New: Royal Gold Grad -->
+            <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fbbf24" />
+                <stop offset="50%" stop-color="#fef3c7" />
+                <stop offset="100%" stop-color="#d97706" />
+            </linearGradient>
+
+            <!-- New: Cyber Pink Grad -->
+            <linearGradient id="pinkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f472b6" />
+                <stop offset="100%" stop-color="#ec4899" />
+            </linearGradient>
+
+            <!-- Glow Filters -->
+            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="2.5" result="blur" />
+                <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                </feMerge>
+            </filter>
+
+            <filter id="heavyGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="6" result="blur" />
+                <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                </feMerge>
+            </filter>
+        </defs>
+    </svg>
+
+    <div class="showcase-header">
+        <h1>Bruno<span>AI</span> Loader Variants</h1>
+        <p>Premium SVG path-based outline animations</p>
+    </div>
+
+    <div class="showcase-grid">
+        <div class="loader-card" id="card-revolver">
+            <h3>Classic Revolver</h3>
+            <div class="loader-container variant-1">
+                <svg viewBox="0 0 100 120" class="logo-svg">
+                    <path class="logo-path" pathLength="100"
+                        d="M50 40 Q50 10 70 10 Q90 10 90 50 L90 110 L10 110 L10 50 Q10 10 30 10 Q50 10 50 40 Z" />
+                    <path class="logo-path" pathLength="100"
+                        d="M35 60 Q45 60 45 70 L45 85 L25 85 L25 70 Q25 60 35 60 Z" />
+                    <path class="logo-path" pathLength="100"
+                        d="M65 60 Q75 60 75 70 L75 85 L55 85 L55 70 Q55 60 65 60 Z" />
+                </svg>
+            </div>
+        </div>
+
+        <div class="loader-card" id="card-liquid">
+            <h3>Liquid Chaser</h3>
+            <div class="loader-container variant-2">
+                <svg viewBox="0 0 100 120" class="logo-svg">
+                    <path class="logo-path" pathLength="100"
+                        d="M50 40 Q50 10 70 10 Q90 10 90 50 L90 110 L10 110 L10 50 Q10 10 30 10 Q50 10 50 40 Z" />
+                    <path class="logo-path" pathLength="100"
+                        d="M35 60 Q45 60 45 70 L45 85 L25 85 L25 70 Q25 60 35 60 Z" />
+                    <path class="logo-path" pathLength="100"
+                        d="M65 60 Q75 60 75 70 L75 85 L55 85 L55 70 Q55 60 65 60 Z" />
+                </svg>
+            </div>
+        </div>
+
+        <div class="loader-card" id="card-echo">
+            <h3>Double Echo</h3>
+            <div class="loader-container variant-3">
+                <svg viewBox="0 0 100 120" class="logo-svg">
+                    <!-- Outer body -->
+                    <path class="logo-path main" pathLength="100"
+                        d="M50 40 Q50 10 70 10 Q90 10 90 50 L90 110 L10 110 L10 50 Q10 10 30 10 Q50 10 50 40 Z" />
+                    <path class="logo-path echo" pathLength="100"
+                        d="M50 40 Q50 10 70 10 Q90 10 90 50 L90 110 L10 110 L10 50 Q10 10 30 10 Q50 10 50 40 Z" />
+
+                    <!-- Left eye -->
+                    <path class="logo-path main" pathLength="100"
+                        d="M35 60 Q45 60 45 70 L45 85 L25 85 L25 70 Q25 60 35 60 Z" />
+                    <path class="logo-path echo" pathLength="100"
+                        d="M35 60 Q45 60 45 70 L45 85 L25 85 L25 70 Q25 60 35 60 Z" />
+
+                    <!-- Right eye -->
+                    <path class="logo-path main" pathLength="100"
+                        d="M65 60 Q75 60 75 70 L75 85 L55 85 L55 70 Q55 60 65 60 Z" />
+                    <path class="logo-path echo" pathLength="100"
+                        d="M65 60 Q75 60 75 70 L75 85 L55 85 L55 70 Q55 60 65 60 Z" />
+                </svg>
+            </div>
+        </div>
+
+        <div class="loader-card" id="card-pulse">
+            <h3>Pulse Flow</h3>
+            <div class="loader-container variant-4">
+                <svg viewBox="0 0 100 120" class="logo-svg">
+                    <path class="logo-path" pathLength="100"
+                        d="M50 40 Q50 10 70 10 Q90 10 90 50 L90 110 L10 110 L10 50 Q10 10 30 10 Q50 10 50 40 Z" />
+                    <path class="logo-path" pathLength="100"
+                        d="M35 60 Q45 60 45 70 L45 85 L25 85 L25 70 Q25 60 35 60 Z" />
+                    <path class="logo-path" pathLength="100"
+                        d="M65 60 Q75 60 75 70 L75 85 L55 85 L55 70 Q55 60 65 60 Z" />
+                </svg>
+            </div>
+        </div>
+
+        <!-- Variant 5: Breathing Pulse -->
+        <div class="loader-card" id="card-breathe">
+            <h3>Breathing Pulse</h3>
+            <div class="loader-container variant-5">
+                <div class="glow-ring"></div>
+                <div class="glow-ring ring-2"></div>
+                <img src="bruno.svg" alt="BrunoAI" class="logo-img" />
+            </div>
+        </div>
+
+        <!-- Variant 6: Orbital Ring -->
+        <div class="loader-card" id="card-orbit">
+            <h3>Orbital Ring</h3>
+            <div class="loader-container variant-6">
+                <div class="orbit-track">
+                    <div class="orbit-dot"></div>
+                </div>
+                <div class="orbit-track track-2">
+                    <div class="orbit-dot dot-2"></div>
+                </div>
+                <img src="bruno.svg" alt="BrunoAI" class="logo-img" />
+            </div>
+        </div>
+
+        <!-- Variant 7: 3D Flip -->
+        <div class="loader-card" id="card-flip">
+            <h3>3D Flip</h3>
+            <div class="loader-container variant-7">
+                <img src="bruno.svg" alt="BrunoAI" class="logo-img" />
+            </div>
+        </div>
+
+        <!-- Variant 8: Radar Scan -->
+        <div class="loader-card" id="card-radar">
+            <h3>Radar Scan</h3>
+            <div class="loader-container variant-8">
+                <div class="radar-sweep"></div>
+                <div class="radar-ring"></div>
+                <div class="radar-ring ring-mid"></div>
+                <div class="radar-ring ring-outer"></div>
+                <img src="bruno.svg" alt="BrunoAI" class="logo-img" />
+            </div>
+        </div>
+        <!-- Variant 9: Hologram Cube -->
+        <div class="loader-card" id="card-cube">
+            <h3>Hologram Cube</h3>
+            <div class="loader-container variant-9">
+                <div class="cube">
+                    <div class="face front"></div>
+                    <div class="face back"></div>
+                    <div class="face right"></div>
+                    <div class="face left"></div>
+                    <div class="face top"></div>
+                    <div class="face bottom"></div>
+                </div>
+                <img src="bruno.svg" alt="BrunoAI" class="logo-img inside-cube" />
+            </div>
+        </div>
+
+        <!-- Variant 10: Stacked Layers -->
+        <div class="loader-card" id="card-stacked">
+            <h3>Stacked Layers</h3>
+            <div class="loader-container variant-10">
+                <img src="bruno.svg" alt="BrunoAI" class="logo-img layer layer-1" />
+                <img src="bruno.svg" alt="BrunoAI" class="logo-img layer layer-2" />
+                <img src="bruno.svg" alt="BrunoAI" class="logo-img layer layer-3" />
+            </div>
+        </div>
+
+        <!-- Variant 11: Pendulum Swing -->
+        <div class="loader-card" id="card-pendulum">
+            <h3>Pendulum Swing</h3>
+            <div class="loader-container variant-11">
+                <div class="pendulum-anchor">
+                    <img src="bruno.svg" alt="BrunoAI" class="logo-img" />
+                </div>
+                <div class="pendulum-shadow"></div>
+            </div>
+        </div>
+
+        <!-- Variant 12: Anti-Gravity Tumble -->
+        <div class="loader-card" id="card-tumble">
+            <h3>Anti-Gravity Tumble</h3>
+            <div class="loader-container variant-12">
+                <img src="bruno.svg" alt="BrunoAI" class="logo-img tumble-logo" />
+            </div>
+        </div>
+        <!-- Variant 13: Anti-Gravity Tumble -->
+        <div class="loader-card" id="card-neural">
+            <h3>Neural Energy Core</h3>
+            <div class="loader-container variant-13">
+                <svg viewBox="0 0 100 120" class="logo-svg">
+
+                    <!-- base (faint structure) -->
+                    <path class="base" pathLength="100"
+                        d="M50 40 Q50 10 70 10 Q90 10 90 50 L90 110 L10 110 L10 50 Q10 10 30 10 Q50 10 50 40 Z" />
+
+                    <!-- moving energy -->
+                    <path class="energy" pathLength="100"
+                        d="M50 40 Q50 10 70 10 Q90 10 90 50 L90 110 L10 110 L10 50 Q10 10 30 10 Q50 10 50 40 Z" />
+
+                </svg>
+            </div>
+        </div>
+
+</body>
+
+</html>

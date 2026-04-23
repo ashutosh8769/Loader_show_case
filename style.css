@@ -1,0 +1,786 @@
+/* ========================================
+   BrunoAI Loader Showcase — Full Styles
+   ======================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #080808;
+    font-family: 'Inter', sans-serif;
+    color: #ffffff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ── Ambient background glow ── */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 60% 40% at 20% 20%, rgba(120, 80, 255, 0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 50% at 80% 80%, rgba(0, 180, 255, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ── Header ── */
+.showcase-header {
+    text-align: center;
+    padding: 56px 24px 32px;
+    position: relative;
+    z-index: 1;
+}
+
+.showcase-header h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+    line-height: 1.1;
+}
+
+.showcase-header h1 span {
+    background: linear-gradient(135deg, #a78bfa 0%, #38bdf8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.showcase-header p {
+    margin-top: 12px;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+/* ── Grid ── */
+.showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 16px 32px 64px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Card ── */
+.loader-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 20px;
+    padding: 32px 24px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    backdrop-filter: blur(12px);
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.loader-card:hover {
+    border-color: rgba(167, 139, 250, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(120, 80, 255, 0.12);
+}
+
+.loader-card h3 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+/* ── Loader Container ── */
+.loader-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ── SVG overlay ── */
+.logo-svg {
+    position: absolute;
+    width: 180px;
+    height: auto;
+    z-index: 10;
+}
+
+/* ── Base path styles ── */
+.logo-path {
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ================================================
+   VARIANT 1 — Classic Revolver
+   A single bright stroke chasing itself around
+   the outline, clockwise, pure white.
+   ================================================ */
+.variant-1 .logo-path {
+    stroke: #ffffff;
+    stroke-dasharray: 90 10;
+    animation: revolve 2.2s linear infinite;
+}
+
+/* Removed delays to keep inner/outer edges in sync */
+.variant-1 .logo-path:nth-child(2) {
+    animation-delay: 0s;
+}
+
+.variant-1 .logo-path:nth-child(3) {
+    animation-delay: 0s;
+}
+
+@keyframes revolve {
+    0% {
+        stroke-dashoffset: 100;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* ================================================
+   VARIANT 2 — Liquid Chaser
+   A wide gradient-coloured band that flows
+   smoothly with a soft glow blur.
+   ================================================ */
+.variant-2 .logo-path {
+    stroke: url(#liquidGrad);
+    stroke-dasharray: 90 10;
+    stroke-width: 2.2;
+    filter: url(#glow);
+    animation: liquid 2.8s linear infinite;
+}
+
+/* Removed delays to keep inner/outer edges in sync */
+.variant-2 .logo-path:nth-child(2) {
+    animation-delay: 0s;
+}
+
+.variant-2 .logo-path:nth-child(3) {
+    animation-delay: 0s;
+}
+
+@keyframes liquid {
+    0% {
+        stroke-dashoffset: 100;
+    }
+
+    100% {
+        stroke-dashoffset: -100;
+    }
+}
+
+/* ================================================
+   VARIANT 3 — Double Echo
+   Two strokes offset in time and colour,
+   one bright violet ahead, one cyan trailing.
+   ================================================ */
+.variant-3 .logo-path.main {
+    stroke: #a78bfa;
+    stroke-dasharray: 90 10;
+    animation: echo-move 2s linear infinite;
+}
+
+.variant-3 .logo-path.echo {
+    stroke: #38bdf8;
+    stroke-dasharray: 90 10;
+    stroke-width: 1.2;
+    opacity: 0.55;
+    animation: echo-move 2s linear infinite;
+}
+
+@keyframes echo-move {
+    from {
+        stroke-dashoffset: 100;
+    }
+
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* ================================================
+   VARIANT 4 — Pulse Flow
+   Each path segment breathes in opacity while
+   the dash offset sweeps, creating a pulsing feel.
+   ================================================ */
+.variant-4 .logo-path {
+    stroke: #ffffff;
+    stroke-dasharray: 90 10;
+    animation: pulse-flow 3s linear infinite;
+}
+
+.variant-4 .logo-path:nth-child(1) {
+    stroke: #a78bfa;
+}
+
+.variant-4 .logo-path:nth-child(2) {
+    stroke: #f472b6;
+}
+
+.variant-4 .logo-path:nth-child(3) {
+    stroke: #38bdf8;
+}
+
+@keyframes pulse-flow {
+    0% {
+        stroke-dashoffset: 100;
+        opacity: 0.2;
+        stroke-width: 1.2;
+    }
+
+    40% {
+        opacity: 1;
+        stroke-width: 2.5;
+    }
+
+    80% {
+        opacity: 0.6;
+        stroke-width: 1.5;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+        opacity: 0.2;
+        stroke-width: 1.2;
+    }
+}
+
+/* ── Shared logo image style for variants 5-8 ── */
+.logo-img {
+    width: 100px;
+    height: auto;
+    position: relative;
+    z-index: 5;
+}
+
+/* ================================================
+   VARIANT 5 — Breathing Pulse
+   The logo gently scales while concentric glow
+   rings expand outward and fade.
+   ================================================ */
+.variant-5 .logo-img {
+    animation: breathe 2.5s ease-in-out infinite;
+}
+
+.variant-5 .glow-ring {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px solid rgba(167, 139, 250, 0.6);
+    animation: ring-expand 2.5s ease-out infinite;
+}
+
+.variant-5 .glow-ring.ring-2 {
+    border-color: rgba(56, 189, 248, 0.5);
+    animation-delay: 1.25s;
+}
+
+@keyframes breathe {
+
+    0%,
+    100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 8px rgba(167, 139, 250, 0.3));
+    }
+
+    50% {
+        transform: scale(1.08);
+        filter: drop-shadow(0 0 20px rgba(167, 139, 250, 0.7));
+    }
+}
+
+@keyframes ring-expand {
+    0% {
+        transform: scale(0.5);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(2.2);
+        opacity: 0;
+    }
+}
+
+/* ================================================
+   VARIANT 6 — Orbital Ring
+   Two glowing dots orbit the logo on tilted
+   circular tracks.
+   ================================================ */
+.variant-6 {
+    perspective: 400px;
+}
+
+.variant-6 .orbit-track {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 1px solid rgba(14, 165, 233, 0.15);
+    animation: orbit-spin 3s linear infinite;
+    transform-style: preserve-3d;
+    transform: rotateX(65deg);
+}
+
+.variant-6 .orbit-track.track-2 {
+    width: 130px;
+    height: 130px;
+    border-color: rgba(244, 114, 182, 0.15);
+    animation: orbit-spin-reverse 2.2s linear infinite;
+    transform: rotateX(65deg) rotateZ(90deg);
+}
+
+.variant-6 .orbit-dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #38bdf8;
+    border-radius: 50%;
+    top: -4px;
+    left: calc(50% - 4px);
+    box-shadow: 0 0 12px 4px rgba(56, 189, 248, 0.8);
+}
+
+.variant-6 .orbit-dot.dot-2 {
+    background: #f472b6;
+    box-shadow: 0 0 12px 4px rgba(244, 114, 182, 0.8);
+}
+
+@keyframes orbit-spin {
+    from {
+        transform: rotateX(65deg) rotateZ(0deg);
+    }
+
+    to {
+        transform: rotateX(65deg) rotateZ(360deg);
+    }
+}
+
+@keyframes orbit-spin-reverse {
+    from {
+        transform: rotateX(65deg) rotateZ(90deg);
+    }
+
+    to {
+        transform: rotateX(65deg) rotateZ(-270deg);
+    }
+}
+
+/* ================================================
+   VARIANT 7 — 3D Flip
+   The logo continuously flips on the Y axis with
+   a subtle bounce and shadow shift.
+   ================================================ */
+.variant-7 {
+    perspective: 600px;
+}
+
+.variant-7 .logo-img {
+    animation: flip3d 3s ease-in-out infinite;
+    transform-style: preserve-3d;
+    backface-visibility: visible;
+}
+
+@keyframes flip3d {
+    0% {
+        transform: rotateY(0deg) scale(1);
+        filter: drop-shadow(0 5px 15px rgba(251, 191, 36, 0.0));
+    }
+
+    25% {
+        transform: rotateY(90deg) scale(0.85);
+        filter: drop-shadow(0 2px 8px rgba(251, 191, 36, 0.4));
+    }
+
+    50% {
+        transform: rotateY(180deg) scale(1);
+        filter: drop-shadow(0 5px 15px rgba(251, 191, 36, 0.6));
+    }
+
+    75% {
+        transform: rotateY(270deg) scale(0.85);
+        filter: drop-shadow(0 2px 8px rgba(251, 191, 36, 0.4));
+    }
+
+    100% {
+        transform: rotateY(360deg) scale(1);
+        filter: drop-shadow(0 5px 15px rgba(251, 191, 36, 0.0));
+    }
+}
+
+/* ================================================
+   VARIANT 8 — Radar Scan
+   Concentric rings with a rotating sweep line
+   that reveals the logo underneath.
+   ================================================ */
+.variant-8 .logo-img {
+    animation: radar-pulse 2s ease-in-out infinite;
+}
+
+.variant-8 .radar-sweep {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg,
+            transparent 0deg,
+            rgba(244, 114, 182, 0.4) 40deg,
+            transparent 80deg);
+    animation: radar-rotate 2s linear infinite;
+    z-index: 3;
+}
+
+.variant-8 .radar-ring {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 1px solid rgba(244, 114, 182, 0.2);
+    z-index: 2;
+}
+
+.variant-8 .radar-ring.ring-mid {
+    width: 130px;
+    height: 130px;
+}
+
+.variant-8 .radar-ring.ring-outer {
+    width: 180px;
+    height: 180px;
+    border-color: rgba(244, 114, 182, 0.1);
+}
+
+@keyframes radar-rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes radar-pulse {
+
+    0%,
+    100% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* ================================================
+   VARIANT 9 — Hologram Cube
+   A rotating 3D cube with the logo floating inside.
+   ================================================ */
+.variant-9 {
+    perspective: 800px;
+}
+
+.variant-9 .cube {
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    transform-style: preserve-3d;
+    animation: rotate-cube 6s infinite linear;
+}
+
+.variant-9 .face {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    background: rgba(14, 165, 233, 0.05);
+    box-shadow: inset 0 0 15px rgba(56, 189, 248, 0.2);
+}
+
+.variant-9 .front {
+    transform: translateZ(60px);
+}
+
+.variant-9 .back {
+    transform: rotateY(180deg) translateZ(60px);
+}
+
+.variant-9 .right {
+    transform: rotateY(90deg) translateZ(60px);
+}
+
+.variant-9 .left {
+    transform: rotateY(-90deg) translateZ(60px);
+}
+
+.variant-9 .top {
+    transform: rotateX(90deg) translateZ(60px);
+}
+
+.variant-9 .bottom {
+    transform: rotateX(-90deg) translateZ(60px);
+}
+
+@keyframes rotate-cube {
+    0% {
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+
+    100% {
+        transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+    }
+}
+
+.variant-9 .inside-cube {
+    width: 70px;
+    animation: pulse-inside 3s ease-in-out infinite;
+}
+
+@keyframes pulse-inside {
+
+    0%,
+    100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.5));
+    }
+
+    50% {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.9));
+    }
+}
+
+/* ================================================
+   VARIANT 10 — Stacked Layers
+   Multiple layers shifting in Z-space.
+   ================================================ */
+.variant-10 {
+    perspective: 800px;
+    transform-style: preserve-3d;
+}
+
+.variant-10 .layer {
+    position: absolute;
+}
+
+.variant-10 .layer-1 {
+    opacity: 0.2;
+    filter: blur(4px) drop-shadow(0 0 10px #38bdf8);
+    animation: layer-anim-1 3s ease-in-out infinite alternate;
+}
+
+.variant-10 .layer-2 {
+    opacity: 0.6;
+    filter: blur(1.5px) drop-shadow(0 0 5px #a78bfa);
+    animation: layer-anim-2 3s ease-in-out infinite alternate;
+}
+
+.variant-10 .layer-3 {
+    opacity: 1;
+    animation: layer-anim-3 3s ease-in-out infinite alternate;
+}
+
+@keyframes layer-anim-1 {
+    0% {
+        transform: rotateY(-25deg) rotateX(15deg) translateZ(-80px);
+    }
+
+    100% {
+        transform: rotateY(25deg) rotateX(-15deg) translateZ(-80px);
+    }
+}
+
+@keyframes layer-anim-2 {
+    0% {
+        transform: rotateY(-25deg) rotateX(15deg) translateZ(-40px);
+    }
+
+    100% {
+        transform: rotateY(25deg) rotateX(-15deg) translateZ(-40px);
+    }
+}
+
+@keyframes layer-anim-3 {
+    0% {
+        transform: rotateY(-25deg) rotateX(15deg) translateZ(0px);
+    }
+
+    100% {
+        transform: rotateY(25deg) rotateX(-15deg) translateZ(0px);
+    }
+}
+
+/* ================================================
+   VARIANT 11 — Pendulum Swing
+   Swinging from the top in a 3D arc.
+   ================================================ */
+.variant-11 {
+    perspective: 800px;
+}
+
+.variant-11 .pendulum-anchor {
+    transform-origin: top center;
+    animation: pendulum-swing 2s ease-in-out infinite alternate;
+    position: relative;
+    top: -20px;
+}
+
+.variant-11 .pendulum-shadow {
+    position: absolute;
+    bottom: 20px;
+    width: 60px;
+    height: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    filter: blur(4px);
+    animation: pendulum-shadow 2s ease-in-out infinite alternate;
+}
+
+@keyframes pendulum-swing {
+    0% {
+        transform: rotateX(-30deg) rotateZ(30deg) translateY(-10px);
+        filter: drop-shadow(15px 15px 10px rgba(167, 139, 250, 0.5));
+    }
+
+    100% {
+        transform: rotateX(-30deg) rotateZ(-30deg) translateY(-10px);
+        filter: drop-shadow(-15px 15px 10px rgba(167, 139, 250, 0.5));
+    }
+}
+
+@keyframes pendulum-shadow {
+    0% {
+        transform: translateX(40px) scale(0.8);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: translateX(0px) scale(1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateX(-40px) scale(0.8);
+        opacity: 0.3;
+    }
+}
+
+/* ================================================
+   VARIANT 12 — Anti-Gravity Tumble
+   Logo tumbles on multiple axes.
+   ================================================ */
+.variant-12 {
+    perspective: 1000px;
+}
+
+.variant-12 .tumble-logo {
+    animation: tumble-anim 4s linear infinite, float-anim 3s ease-in-out infinite alternate;
+    transform-style: preserve-3d;
+}
+
+@keyframes tumble-anim {
+    0% {
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+
+    100% {
+        transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+    }
+}
+
+@keyframes float-anim {
+    0% {
+        top: -20px;
+        filter: drop-shadow(0 30px 10px rgba(56, 189, 248, 0.2));
+    }
+
+    100% {
+        top: 20px;
+        filter: drop-shadow(0 10px 5px rgba(56, 189, 248, 0.6));
+    }
+}
+
+/* ── SVG filter defs (injected via HTML) ── */
+#svg-defs {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+/* ================================================
+   VARIANT 13 — Neural Energy Core
+   Traveling energy pulse with gradient + glow
+   ================================================ */
+
+.variant-13 .base {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.08);
+    stroke-width: 1.8;
+}
+
+/* gradient stroke */
+.variant-13 .energy {
+    fill: none;
+    stroke: url(#neonGrad);
+    stroke-width: 2.4;
+
+    stroke-dasharray: 18 82;
+    stroke-dashoffset: 0;
+
+    filter: url(#heavyGlow);
+
+    animation: neural-flow 2.4s linear infinite;
+}
+
+/* subtle breathing container */
+.variant-13 .logo-svg {
+    animation: neural-breathe 3s ease-in-out infinite;
+}
+
+/* motion */
+@keyframes neural-flow {
+    0% {
+        stroke-dashoffset: 100;
+    }
+
+    100% {
+        stroke-dashoffset: -100;
+    }
+}
+
+/* life-like motion */
+@keyframes neural-breathe {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.9;
+    }
+
+    50% {
+        transform: scale(0.96);
+        opacity: 1;
+    }
+}
