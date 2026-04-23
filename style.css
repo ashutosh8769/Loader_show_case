@@ -75,23 +75,6 @@ body::before {
 }
 
 /* ── Card ── */
-/* ── Light Theme Card for Black Logos ── */
-.light-theme-card {
-    background: #ffffff;
-    border-color: #e5e7eb;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-}
-.light-theme-card:hover {
-    border-color: #d1d5db;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-}
-.light-theme-card h3 {
-    color: #4b5563;
-}
-/* Ensure Variant 1 stroke is visible on white */
-.light-theme-card .variant-1 .logo-path {
-    stroke: #0f172a;
-}
 
 .loader-card {
     background: rgba(255, 255, 255, 0.03);
@@ -118,6 +101,24 @@ body::before {
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.45);
+}
+
+/* ── Light Theme Card for Black Logos ── */
+.light-theme-card {
+    background: #ffffff !important;
+    border-color: #e5e7eb !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+}
+.light-theme-card:hover {
+    border-color: #d1d5db !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1) !important;
+}
+.light-theme-card h3 {
+    color: #4b5563 !important;
+}
+/* Ensure Variant 1 stroke is visible on white */
+.light-theme-card .variant-1 .logo-path {
+    stroke: #0f172a !important;
 }
 
 /* ── Loader Container ── */
