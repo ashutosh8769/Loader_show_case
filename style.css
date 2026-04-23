@@ -154,8 +154,8 @@ body::before {
    ================================================ */
 .variant-1 .logo-path {
     stroke: #ffffff;
-    stroke-dasharray: 90 10;
-    animation: revolve 2.2s linear infinite;
+    stroke-dasharray: 95 5;
+    animation: revolve 4s linear infinite;
 }
 
 /* Removed delays to keep inner/outer edges in sync */
