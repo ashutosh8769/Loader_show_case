@@ -768,22 +768,27 @@ body::before {
     width: 80px;
     mix-blend-mode: screen;
     opacity: 0.8;
+    overflow: visible;
+}
+.variant-14 .glitch-layer .logo-img {
+    width: 100%;
+    height: 100%;
 }
 .variant-14 .glitch-red {
     filter: drop-shadow(4px 0 0 #ef4444);
-    animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
     z-index: 1;
 }
 .variant-14 .glitch-blue {
     filter: drop-shadow(-4px 0 0 #3b82f6);
-    animation: glitch-anim-2 3s infinite linear alternate-reverse;
     z-index: 1;
 }
 .variant-14 .glitch-green {
     filter: drop-shadow(0 4px 0 #10b981);
-    animation: glitch-anim-3 2s infinite linear alternate-reverse;
     z-index: 1;
 }
+.variant-14 .glitch-img-1 { animation: glitch-anim-1 2.5s infinite linear alternate-reverse; }
+.variant-14 .glitch-img-2 { animation: glitch-anim-2 3s infinite linear alternate-reverse; }
+.variant-14 .glitch-img-3 { animation: glitch-anim-3 2s infinite linear alternate-reverse; }
 
 @keyframes glitch-base-anim {
     0%, 100% { opacity: 1; transform: scale(1); }
@@ -888,11 +893,12 @@ body::before {
     height: 105px; /* adjust for logo aspect */
     overflow: hidden;
     animation: scan-reveal 2.5s ease-in-out infinite alternate;
+    filter: drop-shadow(0 0 8px #10b981);
 }
 .variant-16 .laser-scanner .logo-img {
     width: 100%;
     height: 100%;
-    filter: drop-shadow(0 0 8px #10b981) sepia(100%) hue-rotate(90deg) saturate(300%) brightness(1.5);
+    filter: sepia(100%) hue-rotate(90deg) saturate(300%) brightness(1.5);
 }
 .variant-16 .laser-beam {
     position: absolute;
@@ -967,12 +973,18 @@ body::before {
     height: 100%;
 }
 .variant-18 .slice-top {
-    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 65%);
     animation: slice-top-anim 3s cubic-bezier(0.8, 0, 0.2, 1) infinite;
+    overflow: visible;
 }
 .variant-18 .slice-bottom {
-    clip-path: polygon(0 65%, 100% 45%, 100% 100%, 0 100%);
     animation: slice-bot-anim 3s cubic-bezier(0.8, 0, 0.2, 1) infinite;
+    overflow: visible;
+}
+.variant-18 .slice-img-top {
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 65%);
+}
+.variant-18 .slice-img-bot {
+    clip-path: polygon(0 65%, 100% 45%, 100% 100%, 0 100%);
 }
 .variant-18 .slice-flash {
     position: absolute;
