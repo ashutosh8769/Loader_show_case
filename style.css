@@ -733,6 +733,7 @@ body::before {
 .variant-13 .chameleon-svg {
     width: 100px;
     height: 120px;
+    overflow: visible;
     animation: 
         tumble-anim 4s linear infinite, 
         float-anim 3s ease-in-out infinite alternate;
